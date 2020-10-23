@@ -1,0 +1,51 @@
+<div *ngIf="data.isChecked && data.isDone" class="card bg-success mb-3">
+  <div class="card-header">{{ data.date }}</div>
+  <div class="card-body">
+    <h5 class="card-title">{{ data.theme }}</h5>
+    <p class="card-text">{{ data.textWork }}</p>
+    <strong>Оцінка: {{ data.rating }}</strong>
+  </div>
+</div>
+
+<div *ngIf="data.isDone && !data.isChecked" class="card bg-warning mb-3">
+  <div class="card-header">{{ data.date }}</div>
+  <div class="card-body">
+    <h5 class="card-title">{{ data.theme }}</h5>
+    <p class="card-text">{{ data.textWork }}</p>
+  </div>
+  <div class="card-footer text-muted">
+    <form #myForm="ngForm" class="row" (ngSubmit)="submitForm(); myForm.reset()">
+      <div class="col-md-6">
+        <select name="rating" [(ngModel)]="rating" class="h-100 form-control btn btn-warning">
+          <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12];">{{ i }}</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <button type="submit" class="btn btn-warning w-100">
+          <span class="material-icons">
+          done
+          </span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="!data.isDone && !data.isChecked" class="card bg-light mb-3">
+  <div class="card-header">{{ data.date }}</div>
+  <div class="card-body">
+    <h5 class="card-title">{{ data.theme }}</h5>
+    <p class="card-text">{{ data.textWork }}</p>
+  </div>
+  <ng-template [ngIf]="isStudent">
+    <div class="row p-3">
+      <div class="col-md-12">
+        <button (click)="setDone();" class="btn btn-dark w-100">
+          <span class="material-icons">
+          done
+          </span>
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</div>

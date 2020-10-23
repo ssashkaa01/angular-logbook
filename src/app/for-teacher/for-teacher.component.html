@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-4">
+    <app-homework-add></app-homework-add>
+  </div>
+  <div class="col-md-8">
+    <ng-template [ngIf]="listIsNotDone.length > 0">
+      <div class="row">
+        <div class="col-md-12 mb-4">
+          <h4>В роботі [{{ listIsNotDone.length }}]</h4>
+        </div>
+        <div class="col-md-12">
+          <div class="row">
+            <app-homework-item *ngFor="let item of listIsNotDone; let i = index" [data]="item" [index]="i" class="col-md-4"></app-homework-item>
+          </div>
+        </div>
+      </div>
+      <hr />
+    </ng-template>
+    <ng-template [ngIf]="listIsDone.length > 0">
+      <div class="row">
+        <div class="col-md-12 mb-4">
+          <h4>Виконані [{{ listIsDone.length }}]</h4>
+        </div>
+        <div class="col-md-12">
+          <div class="row">
+            <app-homework-item *ngFor="let item of listIsDone; let i = index" [data]="item" [index]="i" class="col-md-4"></app-homework-item>
+          </div>
+        </div>
+      </div>
+      <hr />
+    </ng-template>
+    <ng-template [ngIf]="listIsChecked.length > 0">
+      <div class="row">
+        <div class="col-md-12 mb-4">
+          <h4>Перевірені [{{ listIsChecked.length }}]</h4>
+        </div>
+        <div class="col-md-12">
+          <div class="row">
+            <app-homework-item *ngFor="let item of listIsChecked; let i = index" [data]="item" [index]="i" class="col-md-4"></app-homework-item>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

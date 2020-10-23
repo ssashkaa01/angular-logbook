@@ -1,0 +1,25 @@
+<ng-template [ngIf]="listIsNotDone.length > 0">
+  <div class="row">
+    <div class="col-md-12 mb-4">
+      <h4>В роботі [{{ listIsNotDone.length }}]</h4>
+    </div>
+    <div class="col-md-12">
+      <div class="row">
+        <app-homework-item *ngFor="let item of listIsNotDone; let i = index" [isStudent]="true" [data]="item" [index]="i" class="col-md-3"></app-homework-item>
+      </div>
+    </div>
+  </div>
+  <hr />
+</ng-template>
+<ng-template [ngIf]="listIsChecked.length > 0">
+  <div class="row">
+    <div class="col-md-12 mb-4">
+      <h4>Перевірені [{{ listIsChecked.length }}]</h4>
+    </div>
+    <div class="col-md-12">
+      <div class="row">
+        <app-homework-item *ngFor="let item of listIsChecked; let i = index" [data]="item" [index]="i" class="col-md-3"></app-homework-item>
+      </div>
+    </div>
+  </div>
+</ng-template>
